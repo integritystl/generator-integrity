@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  testdb:
+    container_name: <%= databaseTestContainerName %>
+    image: mysql:5.7
+    platform: linux/amd64
+    environment:
+      MYSQL_DATABASE: ${TEST_MYSQL_DATABASE}
+      MYSQL_ROOT: ${TEST_MYSQL_ROOT}
+      MYSQL_ROOT_PASSWORD: ${TEST_MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${TEST_MYSQL_USER}
+      MYSQL_PASSWORD: ${TEST_MYSQL_USER_PASSWORD}
+    ports:
+      - 3306:3306

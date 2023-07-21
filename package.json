@@ -1,0 +1,16 @@
+{
+  "name": "generator-integrity",
+  "version": "1.0.0",
+  "description": "A Next.js + Prisma + Cypress project generator using current tools and frameworks at Integrity Web Consulting",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "license": "MIT",
+  "files": [
+    "generators"
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "yeoman-generator": "^5.9.0"
+  }
+}

@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  localdb:
+    container_name: <%= databaseLocalContainerName %>
+    image: mysql:5.7
+    platform: linux/amd64
+    environment:
+      MYSQL_DATABASE: ${LOCAL_MYSQL_DATABASE}
+      MYSQL_ROOT: ${LOCAL_MYSQL_ROOT}
+      MYSQL_ROOT_PASSWORD: ${LOCAL_MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${LOCAL_MYSQL_USER}
+      MYSQL_PASSWORD: ${LOCAL_MYSQL_USER_PASSWORD}
+    ports:
+      - 3306:3306
