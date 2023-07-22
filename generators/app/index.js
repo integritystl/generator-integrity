@@ -1,6 +1,7 @@
 import Generator from 'yeoman-generator'
 import util from 'util'
 import childProcess from 'child_process'
+import utils from './utils.js'
 
 const exec = util.promisify(childProcess.exec);
 
@@ -16,36 +17,42 @@ export default class extends Generator {
         type: "input",
         name: "name",
         message: "Your project name",
+        validate: input => utils.testValidInputValue(input),
       },
       {
         type: "input",
         name: "databaseName",
         message: "What will be your MYSQL database name?",
-        default: this.answers.name
+        default: this.answers.name,
+        validate: input => utils.testValidInputValue(input),
       },
       {
         type: "input",
         name: "databaseUser",
         message: "What will be your database user name?",
-        default: 'admin'
+        default: 'admin',
+        validate: input => utils.testValidInputValue(input),
       },
       {
         type: "input",
         name: "databaseUserPassword",
         message: "What will be your database user password?",
-        default: 'password'
+        default: 'password',
+        validate: input => utils.testValidPasswordValue(input),
       },
       {
         type: "input",
         name: "databaseLocalContainerName",
         message: "What will be the name of your local database docker container?",
-        default: 'localdb'
+        default: 'localdb',
+        validate: input => utils.testValidInputValue(input),
       },
       {
         type: "input",
         name: "databaseTestContainerName",
         message: "What will be the name of your test database docker container?",
-        default: 'testdb'
+        default: 'testdb',
+        validate: input => utils.testValidInputValue(input),
       },
       // Demonstration of a confirm-type prompt
       // {

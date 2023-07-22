@@ -4,7 +4,7 @@
   "description": "A Next.js + Prisma + Cypress project generator using current tools and frameworks at Integrity Web Consulting",
   "type": "module",
   "scripts": {
-    "test": "mocha test/newProject.js --timeout 8000"
+    "test": "mocha test/content.js --timeout 8000"
   },
   "keywords": [
     "yeoman-generator"
