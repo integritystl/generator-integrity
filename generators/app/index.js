@@ -1,8 +1,10 @@
-const Generator = require('yeoman-generator');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+import Generator from 'yeoman-generator'
+import util from 'util'
+import childProcess from 'child_process'
 
-module.exports = class extends Generator {
+const exec = util.promisify(childProcess.exec);
+
+export default class extends Generator {
   constructor(args, opts) {
     super(args, opts, { customInstallTask: true });
     this.answers = {}; // Initialize answers object at the class level

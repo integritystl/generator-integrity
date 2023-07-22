@@ -2,6 +2,10 @@
   "name": "generator-integrity",
   "version": "1.0.1",
   "description": "A Next.js + Prisma + Cypress project generator using current tools and frameworks at Integrity Web Consulting",
+  "type": "module",
+  "scripts": {
+    "test": "mocha test/newProject.js --timeout 8000"
+  },
   "keywords": [
     "yeoman-generator"
   ],
@@ -12,5 +16,12 @@
   "main": "index.js",
   "dependencies": {
     "yeoman-generator": "^5.9.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "8.4.0",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-environment": "^3.19.3",
+    "yeoman-test": "^7.4.0"
   }
 }
