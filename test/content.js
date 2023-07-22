@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import path from 'path';
+import path from 'path'
 import fs from 'fs'
 import { assert } from 'chai'
 import helpers from 'yeoman-test'
@@ -11,29 +11,29 @@ const appGeneratorPath = path.join(__dirname, '../generators/app')
 const tempDir = path.join(__dirname, 'temp')
 
 describe('Yeoman Generator Tests', function () {
-  let destinationPath;
+  let destinationPath
 
-  function shouldCreateFile(p) {
+  function shouldCreateFile (p) {
     it(`should create ${p}`, function () {
-      assert.isTrue(fs.existsSync(path.join(destinationPath, p)));
-    });
+      assert.isTrue(fs.existsSync(path.join(destinationPath, p)))
+    })
   }
 
-  function shouldHaveCorrectContent({filePath, string}) {
+  function shouldHaveCorrectContent ({ filePath, string }) {
     it(`should find ${filePath} with the correct content`, function () {
-      const content = fs.readFileSync(path.join(destinationPath, filePath), 'utf-8');
-      assert.include(content, string);
-    });
+      const content = fs.readFileSync(path.join(destinationPath, filePath), 'utf-8')
+      assert.include(content, string)
+    })
   }
 
   before(function () {
-    fs.mkdirSync(tempDir);
+    fs.mkdirSync(tempDir)
 
     return helpers
       .run(appGeneratorPath)
       .inTmpDir((dir) => {
-        destinationPath = dir;
-        return destinationPath;
+        destinationPath = dir
+        return destinationPath
       })
       .withPrompts({
         name: 'zebra',
@@ -41,13 +41,13 @@ describe('Yeoman Generator Tests', function () {
         databaseUser: 'admin',
         databaseUserPassword: 'password',
         databaseLocalContainerName: 'localdb',
-        databaseTestContainerName: 'testdb',
-      });
-  });
+        databaseTestContainerName: 'testdb'
+      })
+  })
 
   after(function () {
-    fs.rmdirSync(tempDir, { recursive: true });
-  });
+    fs.rmdirSync(tempDir, { recursive: true })
+  })
 
   describe('General Tests', function () {
     const paths = [
@@ -98,35 +98,35 @@ describe('Yeoman Generator Tests', function () {
       'zebra/README.md',
       'zebra/tailwind.config.js',
       'zebra/tsconfig.json',
-      'zebra/yarn.lock',
+      'zebra/yarn.lock'
     ]
 
-    paths.forEach(p => shouldCreateFile(p));
-  });
+    paths.forEach(p => shouldCreateFile(p))
+  })
 
   describe('Content Tests', function () {
     const assertions = [
-      { filePath: 'zebra/components/Meta.tsx', string: `const Meta = ({ title = 'zebra', ` },
-      { filePath: 'zebra/cypress/e2e/home.cy.js', string: `cy.title().should('eq', 'zebra')` },
-      { filePath: 'zebra/scripts/connect-to-mysql.sh', string: `DOCKER_CONTAINER="testdb"` },
-      { filePath: 'zebra/scripts/connect-to-mysql.sh', string: `MYSQL_DATABASE="zebra"` },
-      { filePath: 'zebra/.env', string: `DATABASE_URL="mysql://root:password@localhost:3306/zebra"` },
-      { filePath: 'zebra/.env', string: `LOCAL_DATABASE_URL="mysql://admin:password@localhost:3306/zebra"` },
-      { filePath: 'zebra/.env', string: `TEST_DATABASE_URL="mysql://admin:password@localhost:3306/zebra?connection_limit=0&pool_timeout=0&socket_timeout=5"` },
-      { filePath: 'zebra/.env', string: `LOCAL_MYSQL_CONTAINER_NAME='localdb'` },
-      { filePath: 'zebra/.env', string: `LOCAL_MYSQL_DATABASE='zebra'` },
-      { filePath: 'zebra/.env', string: `LOCAL_MYSQL_USER='admin'` },
-      { filePath: 'zebra/.env', string: `LOCAL_MYSQL_USER_PASSWORD='password'` },
-      { filePath: 'zebra/.env', string: `TEST_MYSQL_CONTAINER_NAME='testdb'` },
-      { filePath: 'zebra/.env', string: `TEST_MYSQL_DATABASE='zebra'` },
-      { filePath: 'zebra/.env', string: `TEST_MYSQL_USER='admin'` },
-      { filePath: 'zebra/.env', string: `TEST_MYSQL_USER_PASSWORD='password'` },
-      { filePath: 'zebra/docker-compose.test.yml', string: `container_name: testdb` },
-      { filePath: 'zebra/docker-compose.yml', string: `container_name: localdb` },
-      { filePath: 'zebra/README.md', string: `zebra` },
-      { filePath: 'zebra/package.json', string: `"name": "zebra",` },
-    ];
-  
-    assertions.forEach(assertion => shouldHaveCorrectContent(assertion));
-  });
-});
+      { filePath: 'zebra/components/Meta.tsx', string: 'const Meta = ({ title = \'zebra\', ' },
+      { filePath: 'zebra/cypress/e2e/home.cy.js', string: 'cy.title().should(\'eq\', \'zebra\')' },
+      { filePath: 'zebra/scripts/connect-to-mysql.sh', string: 'DOCKER_CONTAINER="testdb"' },
+      { filePath: 'zebra/scripts/connect-to-mysql.sh', string: 'MYSQL_DATABASE="zebra"' },
+      { filePath: 'zebra/.env', string: 'DATABASE_URL="mysql://root:password@localhost:3306/zebra"' },
+      { filePath: 'zebra/.env', string: 'LOCAL_DATABASE_URL="mysql://admin:password@localhost:3306/zebra"' },
+      { filePath: 'zebra/.env', string: 'TEST_DATABASE_URL="mysql://admin:password@localhost:3306/zebra?connection_limit=0&pool_timeout=0&socket_timeout=5"' },
+      { filePath: 'zebra/.env', string: 'LOCAL_MYSQL_CONTAINER_NAME=\'localdb\'' },
+      { filePath: 'zebra/.env', string: 'LOCAL_MYSQL_DATABASE=\'zebra\'' },
+      { filePath: 'zebra/.env', string: 'LOCAL_MYSQL_USER=\'admin\'' },
+      { filePath: 'zebra/.env', string: 'LOCAL_MYSQL_USER_PASSWORD=\'password\'' },
+      { filePath: 'zebra/.env', string: 'TEST_MYSQL_CONTAINER_NAME=\'testdb\'' },
+      { filePath: 'zebra/.env', string: 'TEST_MYSQL_DATABASE=\'zebra\'' },
+      { filePath: 'zebra/.env', string: 'TEST_MYSQL_USER=\'admin\'' },
+      { filePath: 'zebra/.env', string: 'TEST_MYSQL_USER_PASSWORD=\'password\'' },
+      { filePath: 'zebra/docker-compose.test.yml', string: 'container_name: testdb' },
+      { filePath: 'zebra/docker-compose.yml', string: 'container_name: localdb' },
+      { filePath: 'zebra/README.md', string: 'zebra' },
+      { filePath: 'zebra/package.json', string: '"name": "zebra",' }
+    ]
+
+    assertions.forEach(assertion => shouldHaveCorrectContent(assertion))
+  })
+})

@@ -4,7 +4,9 @@
   "description": "A Next.js + Prisma + Cypress project generator using current tools and frameworks at Integrity Web Consulting",
   "type": "module",
   "scripts": {
-    "test": "mocha test/content.js --timeout 8000"
+    "test": "mocha test/content.js --timeout 8000",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
   },
   "keywords": [
     "yeoman-generator"
@@ -19,6 +21,12 @@
   },
   "devDependencies": {
     "chai": "^4.3.7",
+    "eslint": "^8.0.1",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-javascript": "^1.3.4",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
     "mocha": "8.4.0",
     "yeoman-assert": "^3.1.1",
     "yeoman-environment": "^3.19.3",
