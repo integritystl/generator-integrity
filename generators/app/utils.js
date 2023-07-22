@@ -1,41 +1,4 @@
-function hasSpace(packageName) {
-  const spaceRegex = /\s/;
-  return spaceRegex.test(packageName);
-}
-
-function hasInvalidSpacesPackageName(packageName) {
-  if (packageName === undefined) {
-    return false;
-  }
-  const trimmedName = packageName.trim();
-  return packageName === trimmedName && !this.hasSpace(packageName);
-}
-
-function hasInvalidCharacters(packageName) {
-  // Regular expression to match the invalid characters
-  const invalidCharRegex = /[~)('!*]/;
-  return invalidCharRegex.test(packageName);
-}
-
-function hasTooLongPackageName(packageName) {
-  if (packageName === undefined) {
-    return false;
-  }
-  const maxLength = 214;
-  return packageName.length <= maxLength;
-}
-
-function isUrlSafe(packageName) {
-  const urlSafeRegex = /^[a-zA-Z0-9-_]+$/;
-  return urlSafeRegex.test(packageName);
-}
-
-function hasUpperCase(packageName) {
-  const upperCaseRegex = /[A-Z]/;
-  return upperCaseRegex.test(packageName);
-}
-
-function isUndefinedOrEmpty(packageName) {
+function isEmpty(packageName) {
   return packageName === undefined || packageName.trim().length === 0;
 }
 
@@ -43,32 +6,39 @@ function startsWithDotOrUnderscore(packageName) {
   return packageName.startsWith('.') || packageName.startsWith('_');
 }
 
+function matchesRegex(packageName, regex) {
+  return regex.test(packageName);
+}
+
 function testValidInputValue(input) {
-  if (isUndefinedOrEmpty(input)) {
-    return 'Project name cannot be empty'
-  } else if (hasUpperCase(input)) {
-    return 'Project name cannot have uppercase letters'
-  } else if (!isUrlSafe(input)) {
-    return 'Project name can only contain letters, numbers, dashes, and underscores'
-  } else if (startsWithDotOrUnderscore(input)) {
-    return 'Project name cannot start with a period or underscore'
-  } else if (hasInvalidSpacesPackageName(input)) {
-    return 'Project name cannot contain leading, trailing spaces, or spaces between characters'
-  } else if (hasInvalidCharacters(input)) {
-    return 'Project name cannot contain ~ ) ( \' * !'
-  } else if (hasTooLongPackageName(input)) {
-    return 'Project name cannot be longer than 214 characters'
+  const validations = [
+    { test: isEmpty, message: 'Project name cannot be empty' },
+    { test: (str) => matchesRegex(str, /[A-Z]/), message: 'Project name cannot have uppercase letters' },
+    { test: (str) => !matchesRegex(str, /^[a-zA-Z0-9-_]+$/), message: 'Project name can only contain letters, numbers, dashes, and underscores' },
+    { test: startsWithDotOrUnderscore, message: 'Project name cannot start with a period or underscore' },
+    { test: (str) => matchesRegex(str, /\s/), message: 'Project name cannot contain leading, trailing spaces, or spaces between characters' },
+    { test: (str) => matchesRegex(str, /[~)('!*]/), message: 'Project name cannot contain ~ ) ( \' * !' },
+    { test: (str) => str.length > 214, message: 'Project name cannot be longer than 214 characters' },
+  ];
+
+  for (const { test, message } of validations) {
+    if (test(input)) return message;
   }
-  return true
+
+  return true;
 }
 
 function testValidPasswordValue(input) {
-  if (isUndefinedOrEmpty(input)) {
-    return 'Password cannot be empty'
-  } else if (hasInvalidSpacesPackageName(input)) {
-    return 'Password cannot contain spaces'
+  const validations = [
+    { test: isEmpty, message: 'Password cannot be empty' },
+    { test: (str) => matchesRegex(str, /\s/), message: 'Password cannot contain spaces' },
+  ];
+
+  for (const { test, message } of validations) {
+    if (test(input)) return message;
   }
-  return true
+
+  return true;
 }
 
 export default {

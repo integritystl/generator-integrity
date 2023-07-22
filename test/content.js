@@ -8,13 +8,26 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const appGeneratorPath = path.join(__dirname, '../generators/app')
+const tempDir = path.join(__dirname, 'temp')
 
 describe('Yeoman Generator Tests', function () {
-  let destinationPath; // Store the destination path between each test
+  let destinationPath;
+
+  function shouldCreateFile(p) {
+    it(`should create ${p}`, function () {
+      assert.isTrue(fs.existsSync(path.join(destinationPath, p)));
+    });
+  }
+
+  function shouldHaveCorrectContent({filePath, string}) {
+    it(`should find ${filePath} with the correct content`, function () {
+      const content = fs.readFileSync(path.join(destinationPath, filePath), 'utf-8');
+      assert.include(content, string);
+    });
+  }
 
   before(function () {
-    // Create the temporary directory before all tests
-    fs.mkdirSync(path.join(__dirname, 'temp'));
+    fs.mkdirSync(tempDir);
 
     return helpers
       .run(appGeneratorPath)
@@ -33,8 +46,7 @@ describe('Yeoman Generator Tests', function () {
   });
 
   after(function () {
-    // Cleanup the temporary directory after all tests
-    fs.rmdirSync(path.join(__dirname, 'temp'), { recursive: true });
+    fs.rmdirSync(tempDir, { recursive: true });
   });
 
   describe('General Tests', function () {
@@ -89,11 +101,7 @@ describe('Yeoman Generator Tests', function () {
       'zebra/yarn.lock',
     ]
 
-    paths.forEach(p => {
-      it(`should create ${p}`, function () {
-        assert.isTrue(fs.existsSync(path.join(destinationPath, p)));
-      });
-    });
+    paths.forEach(p => shouldCreateFile(p));
   });
 
   describe('Content Tests', function () {
@@ -119,11 +127,6 @@ describe('Yeoman Generator Tests', function () {
       { filePath: 'zebra/package.json', string: `"name": "zebra",` },
     ];
   
-    assertions.forEach(assertion => {
-      it(`should find ${assertion.filePath} with the correct content`, function () {
-        const content = fs.readFileSync(path.join(destinationPath, assertion.filePath), 'utf-8');
-        assert.include(content, assertion.string);
-      });
-    });
+    assertions.forEach(assertion => shouldHaveCorrectContent(assertion));
   });
 });
