@@ -11,7 +11,8 @@
   "scripts": {
     "test": "mocha test/content.js --timeout 8000",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "lint-fix": "eslint . --fix",
+    "prepush": "yarn lint && yarn test"
   },
   "keywords": [
     "yeoman-generator"
