@@ -1,4 +1,4 @@
-Generator-Integrity
+Generator-Integrity [![Main Build](https://github.com/bpkennedy/generator-integrity/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/bpkennedy/generator-integrity/actions?query=workflow)
 ===================
 A Next.js + Prisma + Cypress project generator using current tools and frameworks (as of 2023) at [Integrity Web Consulting](https://www.integrityxd.com/).
 
