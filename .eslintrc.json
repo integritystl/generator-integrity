@@ -9,6 +9,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }]
   },
   "globals": {
     "describe": "readonly",

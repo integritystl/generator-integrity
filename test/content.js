@@ -19,10 +19,10 @@ describe('Yeoman Generator Tests', function () {
     })
   }
 
-  function shouldHaveCorrectContent ({ filePath, string }) {
+  function shouldHaveCorrectContent ({ filePath, containedString }) {
     it(`should find ${filePath} with the correct content`, function () {
       const content = fs.readFileSync(path.join(destinationPath, filePath), 'utf-8')
-      assert.include(content, string)
+      assert.include(content, containedString)
     })
   }
 
@@ -106,25 +106,25 @@ describe('Yeoman Generator Tests', function () {
 
   describe('Content Tests', function () {
     const assertions = [
-      { filePath: 'zebra/components/Meta.tsx', string: 'const Meta = ({ title = \'zebra\', ' },
-      { filePath: 'zebra/cypress/e2e/home.cy.js', string: 'cy.title().should(\'eq\', \'zebra\')' },
-      { filePath: 'zebra/scripts/connect-to-mysql.sh', string: 'DOCKER_CONTAINER="testdb"' },
-      { filePath: 'zebra/scripts/connect-to-mysql.sh', string: 'MYSQL_DATABASE="zebra"' },
-      { filePath: 'zebra/.env', string: 'DATABASE_URL="mysql://root:password@localhost:3306/zebra"' },
-      { filePath: 'zebra/.env', string: 'LOCAL_DATABASE_URL="mysql://admin:password@localhost:3306/zebra"' },
-      { filePath: 'zebra/.env', string: 'TEST_DATABASE_URL="mysql://admin:password@localhost:3306/zebra?connection_limit=0&pool_timeout=0&socket_timeout=5"' },
-      { filePath: 'zebra/.env', string: 'LOCAL_MYSQL_CONTAINER_NAME=\'localdb\'' },
-      { filePath: 'zebra/.env', string: 'LOCAL_MYSQL_DATABASE=\'zebra\'' },
-      { filePath: 'zebra/.env', string: 'LOCAL_MYSQL_USER=\'admin\'' },
-      { filePath: 'zebra/.env', string: 'LOCAL_MYSQL_USER_PASSWORD=\'password\'' },
-      { filePath: 'zebra/.env', string: 'TEST_MYSQL_CONTAINER_NAME=\'testdb\'' },
-      { filePath: 'zebra/.env', string: 'TEST_MYSQL_DATABASE=\'zebra\'' },
-      { filePath: 'zebra/.env', string: 'TEST_MYSQL_USER=\'admin\'' },
-      { filePath: 'zebra/.env', string: 'TEST_MYSQL_USER_PASSWORD=\'password\'' },
-      { filePath: 'zebra/docker-compose.test.yml', string: 'container_name: testdb' },
-      { filePath: 'zebra/docker-compose.yml', string: 'container_name: localdb' },
-      { filePath: 'zebra/README.md', string: 'zebra' },
-      { filePath: 'zebra/package.json', string: '"name": "zebra",' }
+      { filePath: `zebra/components/Meta.tsx`, containedString: `const Meta = ({ title = 'zebra', ` },
+      { filePath: `zebra/cypress/e2e/home.cy.js`, containedString: `cy.title().should('eq', 'zebra')` },
+      { filePath: `zebra/scripts/connect-to-mysql.sh`, containedString: `DOCKER_CONTAINER="testdb"` },
+      { filePath: `zebra/scripts/connect-to-mysql.sh`, containedString: `MYSQL_DATABASE="zebra"` },
+      { filePath: `zebra/.env`, containedString: `DATABASE_URL="mysql://root:password@localhost:3306/zebra"` },
+      { filePath: `zebra/.env`, containedString: `LOCAL_DATABASE_URL="mysql://admin:password@localhost:3306/zebra"` },
+      { filePath: `zebra/.env`, containedString: `TEST_DATABASE_URL="mysql://admin:password@localhost:3306/zebra?connection_limit=0&pool_timeout=0&socket_timeout=5"` },
+      { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_CONTAINER_NAME='localdb'` },
+      { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_DATABASE='zebra'` },
+      { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_USER='admin'` },
+      { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_USER_PASSWORD='password'` },
+      { filePath: `zebra/.env`, containedString: `TEST_MYSQL_CONTAINER_NAME='testdb'` },
+      { filePath: `zebra/.env`, containedString: `TEST_MYSQL_DATABASE='zebra'` },
+      { filePath: `zebra/.env`, containedString: `TEST_MYSQL_USER='admin'` },
+      { filePath: `zebra/.env`, containedString: `TEST_MYSQL_USER_PASSWORD='password'` },
+      { filePath: `zebra/docker-compose.test.yml`, containedString: `container_name: testdb` },
+      { filePath: `zebra/docker-compose.yml`, containedString: `container_name: localdb` },
+      { filePath: `zebra/README.md`, containedString: `zebra` },
+      { filePath: `zebra/package.json`, containedString: `"name": "zebra",` }
     ]
 
     assertions.forEach(assertion => shouldHaveCorrectContent(assertion))
