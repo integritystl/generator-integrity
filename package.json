@@ -43,5 +43,8 @@
     "yeoman-assert": "^3.1.1",
     "yeoman-environment": "^3.19.3",
     "yeoman-test": "^7.4.0"
+  },
+  "resolutions": {
+    "**/wrap-ansi": "7.0.0"
   }
 }
