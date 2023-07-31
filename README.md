@@ -38,3 +38,15 @@ The new project will start a local docker container and try to use your host mac
 For this repository (the generator repo itself), the name property must be prefixed by `generator-`. The keywords property must contain "yeoman-generator" and the repo must have a description to be indexed by yeoman's generators page.
 
 The `files` property must be an array of files and directories that is used by this generator.
+
+### Publishing to NPM
+In your terminal:
+1. Update package.json 'version' to be next incrental semver number
+2. Push up (which runs lint and test first)
+3. Create tag with `git tag 1.0.4` (if I was creating new 1.0.4 tag)
+4. Push tag up (which runs lint and test first) with `git push --tags`
+In Github:
+5. In Github create a new Release using that 1.0.4 tag, make sure to check the box to make latest release.
+Back in your Terminal:
+6. `npm publish --ignore-scripts` (you will be asked to enter the OverTheAir authentication code from your 2FA app)
+
