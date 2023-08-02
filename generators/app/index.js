@@ -25,6 +25,7 @@ module.exports = class extends Generator {
       prompt('databaseName', 'What will be your MYSQL database name?'),
       prompt('databaseUser', 'What will be your database user name?', 'admin'),
       prompt('databaseUserPassword', 'What will be your database user password?', 'password'),
+      prompt('databasePort', 'What port will be your database run on?', '3306')
     ])
 
     this.log('You chose: \n' + Object.entries(this.answers).map(([key, value]) => `  ${key}: ${value}`).join('\n'))

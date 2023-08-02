@@ -36,8 +36,7 @@ describe('Yeoman Generator Tests', function () {
         databaseName: 'zebra',
         databaseUser: 'admin',
         databaseUserPassword: 'password',
-        databaseLocalContainerName: 'zebra_localdb',
-        databaseTestContainerName: 'zebra_testdb'
+        databasePort: '3309'
       })
   })
 
@@ -106,9 +105,9 @@ describe('Yeoman Generator Tests', function () {
       { filePath: `zebra/cypress/e2e/home.cy.js`, containedString: `cy.title().should('eq', 'zebra')` },
       { filePath: `zebra/scripts/connect-to-mysql.sh`, containedString: `DOCKER_CONTAINER="zebra_testdb"` },
       { filePath: `zebra/scripts/connect-to-mysql.sh`, containedString: `MYSQL_DATABASE="zebra"` },
-      { filePath: `zebra/.env`, containedString: `DATABASE_URL="mysql://root:password@localhost:3306/zebra"` },
-      { filePath: `zebra/.env`, containedString: `LOCAL_DATABASE_URL="mysql://admin:password@localhost:3306/zebra"` },
-      { filePath: `zebra/.env`, containedString: `TEST_DATABASE_URL="mysql://admin:password@localhost:3306/zebra?connection_limit=0&pool_timeout=0&socket_timeout=5"` },
+      { filePath: `zebra/.env`, containedString: `DATABASE_URL="mysql://root:password@localhost:3309/zebra"` },
+      { filePath: `zebra/.env`, containedString: `LOCAL_DATABASE_URL="mysql://admin:password@localhost:3309/zebra"` },
+      { filePath: `zebra/.env`, containedString: `TEST_DATABASE_URL="mysql://admin:password@localhost:3309/zebra?connection_limit=0&pool_timeout=0&socket_timeout=5"` },
       { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_CONTAINER_NAME='zebra_localdb'` },
       { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_DATABASE='zebra'` },
       { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_USER='admin'` },

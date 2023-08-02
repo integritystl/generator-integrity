@@ -11,4 +11,4 @@ services:
       MYSQL_USER: ${LOCAL_MYSQL_USER}
       MYSQL_PASSWORD: ${LOCAL_MYSQL_USER_PASSWORD}
     ports:
-      - 3306:3306
+      - <%= databasePort %>:3306

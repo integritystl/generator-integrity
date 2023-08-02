@@ -9,8 +9,14 @@ A Next.js + Prisma + Cypress project generator using current tools and framework
 
 ## Usage
 ```bash
-# run it to generate your project files
+# generate your project files - it will prompt you for information
 npx -p yo -p generator-integrity -c 'yo integrity'
+
+# cd into new project
+cd my-new-project
+
+# startup new project
+./local-start.sh
 ```
 
 When you run it you'll be asked to pick your preferences for:
@@ -18,14 +24,7 @@ When you run it you'll be asked to pick your preferences for:
 * Database Name
 * Database User Name (defaults to 'admin')
 * Database User Password (default to 'password')
-* Local Database Docker Container Name (defaults to 'localdb')
-* Test Database Docker Container Name (defaults to 'testdb')
-
-## Starting the new project
-The new project will start a local docker container and try to use your host machine port 3306, so you need to stop any other MySQL database instance that is bound to port 3306. Then you can `cd` into your new project directory and run the shell script:
-```bash
-./local-start.sh
-```
+* Database Port (default 3306)
 
 ### Development
 For this repository (the generator repo itself), the name property must be prefixed by `generator-`. The keywords property must contain "yeoman-generator" and the repo must have a description to be indexed by yeoman's generators page.
@@ -41,5 +40,5 @@ In your terminal:
 In Github:
 5. In Github create a new Release using that 1.0.4 tag, make sure to check the box to make latest release.
 Back in your Terminal:
-6. `npm publish --ignore-scripts` (you will be asked to enter the OverTheAir authentication code from your 2FA app)
+6. `npm publish` (you will be asked to enter the OverTheAir authentication code from your 2FA app)
 
