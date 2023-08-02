@@ -8,6 +8,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "ignorePatterns": ["**/dist"],
   "rules": {
     "quotes": ["error", "single", { "allowTemplateLiterals": true }]
   },
