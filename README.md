@@ -10,7 +10,7 @@ A Next.js + Prisma + Cypress project generator using current tools and framework
 ## Usage
 ```bash
 # generate your project files - it will prompt you for information
-npx -p yo -p generator-integrity -c 'yo integrity'
+npx -p yo -p generator-integrity@latest -c 'yo integrity'
 
 # cd into new project
 cd my-new-project
