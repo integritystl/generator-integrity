@@ -6,18 +6,11 @@ A Next.js + Prisma + Cypress project generator using current tools and framework
 * Node v16.x - Node version 16.x is required. Versions less than or greater than 16 will not build
 * Docker
 * Docker-Compose
-> I recommend installing and using Yarn package manager. Install with `npm install --global yarn`
 
 ## Usage
 ```bash
-# install yo, a CLI tool for running generators
-npm install --global yo
-
-# install the Integrity generator
-npm install --global generator-integrity
-
 # run it to generate your project files
-yo integrity
+npx generator-integrity
 ```
 
 When you run it you'll be asked to pick your preferences for:
