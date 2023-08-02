@@ -1,6 +1,6 @@
 {
   "name": "generator-integrity",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A Next.js + Prisma + Cypress project generator using current tools and frameworks at Integrity Web Consulting.",
   "author": "Integrity Web Consulting",
   "repository": {
@@ -28,7 +28,7 @@
   ],
   "main": "generators/app/index.js",
   "bin": {
-    "generator-integrity": "generators/app/index.js"
+    "generator-integrity": "generators/app/launcher.mjs"
   },
   "dependencies": {
     "yeoman-generator": "^5.9.0"
