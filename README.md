@@ -1,4 +1,4 @@
-Generator-Integrity [![Main Build](https://github.com/bpkennedy/generator-integrity/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/bpkennedy/generator-integrity/actions?query=workflow)
+Generator-Integrity [![Main Build](https://github.com/integritystl/generator-integrity/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/integritystl/generator-integrity/actions?query=workflow)
 ===================
 A Next.js + Prisma + Cypress project generator using current tools and frameworks (as of 2023) at [Integrity Web Consulting](https://www.integrityxd.com/).
 
@@ -40,5 +40,5 @@ In your terminal:
 In Github:
 5. In Github create a new Release using that 1.0.4 tag, make sure to check the box to make latest release.
 Back in your Terminal:
-6. `npm publish` (you will be asked to enter the OverTheAir authentication code from your 2FA app)
+6. `npm publish` (you will be asked to enter the OTP (one-time password) - and email is sent to dev-team@integrityxd.com)
 

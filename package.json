@@ -1,11 +1,11 @@
 {
   "name": "generator-integrity",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "A Next.js + Prisma + Cypress project generator using current tools and frameworks at Integrity Web Consulting.",
   "author": "Integrity Web Consulting",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bpkennedy/generator-integrity.git"
+    "url": "https://github.com/integritystl/generator-integrity.git"
   },
   "type": "commonjs",
   "scripts": {
@@ -14,7 +14,8 @@
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "prepush": "yarn lint && yarn test",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "postinstall": "husky install"
   },
   "husky": {
     "hooks": {
