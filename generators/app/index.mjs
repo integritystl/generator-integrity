@@ -1,3 +1,5 @@
+#!/usr/bin/env node --experimental-modules
+
 import Generator from 'yeoman-generator'
 import util from 'util'
 import childProcess from 'child_process'
