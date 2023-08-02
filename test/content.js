@@ -1,11 +1,7 @@
-import { fileURLToPath } from 'url'
-import path from 'path'
-import fs from 'fs'
-import { assert } from 'chai'
-import helpers from 'yeoman-test'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const path = require('path')
+const fs = require('fs')
+const assert = require('chai').assert
+const helpers = require('yeoman-test')
 
 const appGeneratorPath = path.join(__dirname, '../generators/app')
 const tempDir = path.join(__dirname, 'temp')

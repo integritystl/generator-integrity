@@ -1,13 +1,11 @@
-#!/usr/bin/env node --experimental-modules
-
-import Generator from 'yeoman-generator'
-import util from 'util'
-import childProcess from 'child_process'
-import utils from './utils.js'
+const Generator = require('yeoman-generator')
+const util = require('util')
+const childProcess = require('child_process')
+const utils = require('./utils.js')
 
 const exec = util.promisify(childProcess.exec)
 
-export default class extends Generator {
+module.exports = class extends Generator {
   constructor (args, opts) {
     super(args, opts, { customInstallTask: true })
     this.answers = {}
@@ -86,4 +84,4 @@ export default class extends Generator {
   end () {
     this.log('New React app has been created based on the template successfully!')
   }
-};
+}

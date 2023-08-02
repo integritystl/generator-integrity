@@ -1,14 +1,8 @@
-function isEmpty (packageName) {
-  return packageName === undefined || packageName.trim().length === 0
-}
+const isEmpty = (packageName) => packageName === undefined || packageName.trim().length === 0
 
-function startsWithDotOrUnderscore (packageName) {
-  return packageName.startsWith('.') || packageName.startsWith('_')
-}
+const startsWithDotOrUnderscore = (packageName) => packageName.startsWith('.') || packageName.startsWith('_')
 
-function matchesRegex (packageName, regex) {
-  return regex.test(packageName)
-}
+const matchesRegex = (packageName, regex) => regex.test(packageName)
 
 function testValidInputValue (input) {
   const validations = [
@@ -41,7 +35,7 @@ function testValidPasswordValue (input) {
   return true
 }
 
-export default {
+module.exports = {
   testValidInputValue,
   testValidPasswordValue
 }
