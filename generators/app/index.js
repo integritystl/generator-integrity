@@ -25,8 +25,6 @@ module.exports = class extends Generator {
       prompt('databaseName', 'What will be your MYSQL database name?'),
       prompt('databaseUser', 'What will be your database user name?', 'admin'),
       prompt('databaseUserPassword', 'What will be your database user password?', 'password'),
-      prompt('databaseLocalContainerName', 'What will be the name of your local database docker container?', 'localdb'),
-      prompt('databaseTestContainerName', 'What will be the name of your test database docker container?', 'testdb')
     ])
 
     this.log('You chose: \n' + Object.entries(this.answers).map(([key, value]) => `  ${key}: ${value}`).join('\n'))
@@ -82,6 +80,6 @@ module.exports = class extends Generator {
   }
 
   end () {
-    this.log('New React app has been created based on the template successfully!')
+    this.log(`💥 BOOM! 🎉 New Integrity app has been created. Let's make something awesome.`)
   }
 }

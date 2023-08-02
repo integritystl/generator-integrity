@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   localdb:
-    container_name: <%= databaseLocalContainerName %>
+    container_name: <%= name %>_localdb
     image: mysql:5.7
     platform: linux/amd64
     environment:

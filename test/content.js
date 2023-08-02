@@ -36,8 +36,8 @@ describe('Yeoman Generator Tests', function () {
         databaseName: 'zebra',
         databaseUser: 'admin',
         databaseUserPassword: 'password',
-        databaseLocalContainerName: 'localdb',
-        databaseTestContainerName: 'testdb'
+        databaseLocalContainerName: 'zebra_localdb',
+        databaseTestContainerName: 'zebra_testdb'
       })
   })
 
@@ -104,21 +104,21 @@ describe('Yeoman Generator Tests', function () {
     const assertions = [
       { filePath: `zebra/components/Meta.tsx`, containedString: `const Meta = ({ title = 'zebra', ` },
       { filePath: `zebra/cypress/e2e/home.cy.js`, containedString: `cy.title().should('eq', 'zebra')` },
-      { filePath: `zebra/scripts/connect-to-mysql.sh`, containedString: `DOCKER_CONTAINER="testdb"` },
+      { filePath: `zebra/scripts/connect-to-mysql.sh`, containedString: `DOCKER_CONTAINER="zebra_testdb"` },
       { filePath: `zebra/scripts/connect-to-mysql.sh`, containedString: `MYSQL_DATABASE="zebra"` },
       { filePath: `zebra/.env`, containedString: `DATABASE_URL="mysql://root:password@localhost:3306/zebra"` },
       { filePath: `zebra/.env`, containedString: `LOCAL_DATABASE_URL="mysql://admin:password@localhost:3306/zebra"` },
       { filePath: `zebra/.env`, containedString: `TEST_DATABASE_URL="mysql://admin:password@localhost:3306/zebra?connection_limit=0&pool_timeout=0&socket_timeout=5"` },
-      { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_CONTAINER_NAME='localdb'` },
+      { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_CONTAINER_NAME='zebra_localdb'` },
       { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_DATABASE='zebra'` },
       { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_USER='admin'` },
       { filePath: `zebra/.env`, containedString: `LOCAL_MYSQL_USER_PASSWORD='password'` },
-      { filePath: `zebra/.env`, containedString: `TEST_MYSQL_CONTAINER_NAME='testdb'` },
+      { filePath: `zebra/.env`, containedString: `TEST_MYSQL_CONTAINER_NAME='zebra_testdb'` },
       { filePath: `zebra/.env`, containedString: `TEST_MYSQL_DATABASE='zebra'` },
       { filePath: `zebra/.env`, containedString: `TEST_MYSQL_USER='admin'` },
       { filePath: `zebra/.env`, containedString: `TEST_MYSQL_USER_PASSWORD='password'` },
-      { filePath: `zebra/docker-compose.test.yml`, containedString: `container_name: testdb` },
-      { filePath: `zebra/docker-compose.yml`, containedString: `container_name: localdb` },
+      { filePath: `zebra/docker-compose.test.yml`, containedString: `container_name: zebra_testdb` },
+      { filePath: `zebra/docker-compose.yml`, containedString: `container_name: zebra_localdb` },
       { filePath: `zebra/README.md`, containedString: `zebra` },
       { filePath: `zebra/package.json`, containedString: `"name": "zebra",` }
     ]
