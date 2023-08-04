@@ -27,18 +27,47 @@ When you run it you'll be asked to pick your preferences for:
 * Database Port (default 3306)
 
 ### Development
-For this repository (the generator repo itself), the name property must be prefixed by `generator-`. The keywords property must contain "yeoman-generator" and the repo must have a description to be indexed by yeoman's generators page.
+For development, you'll need to install the yo package globally, `npm install -g yo`
 
-The `files` property must be an array of files and directories that is used by this generator.
+Make your changes and then:
+```bash
+# build/compile the generator /dist folder
+yarn build
+# link this package to your global npm packages
+npm link
+
+# now from any directory you can use the linked package just like a global package
+cd ..
+yo integrity
+```
+
+If making multiple changes, may need to unlink and relink.
+```bash
+npm unlink generator-integrity && yarn build && npm link
+```
+
+If you run into issues performing `npm unlink generator-integrity` such as peer dependency issues, you can also forcibly delete the it using `npm uninstall -g generator-integrity`
+
+#### Note about generators
+For any yeoman-generator, the repo name property must be prefixed by 'generator-'. The `keywords` property must contain "yeoman-generator" and the repo must have a description to be indexed by yeoman's generators page. The `files` property must be an array of files and directories that is used by this generator.
+
+### Pushing commits
+Before pushing, make sure the linter and tests pass:
+```bash
+yarn lint
+yarn test
+```
+There is no CI setup that runs these tests automatically, so make sure to run them before pushing.
 
 ### Publishing to NPM
-In your terminal:
-1. Update package.json 'version' to be next incrental semver number
-2. Push up (which runs lint and test first)
-3. Create tag with `git tag 1.0.4` (if I was creating new 1.0.4 tag)
-4. Push tag up (which runs lint and test first) with `git push --tags`
-In Github:
-5. In Github create a new Release using that 1.0.4 tag, make sure to check the box to make latest release.
-Back in your Terminal:
-6. `npm publish` (you will be asked to enter the OTP (one-time password) - and email is sent to dev-team@integrityxd.com)
-
+Example scenario, how to publish a new version called 1.2.3
+1. Update package.json `version` to be `1.2.3`
+2. Build app with `yarn build`
+3. Run linter and tests with `yarn lint && yarn test`
+4. Add your changes to git and commit with a descriptive message.
+5. Push up to `main` branch
+6. Create tag with `git tag 1.2.3`
+7. Push tag up with `git push --tags`
+8. In Github, create a new Release using tag 1.2.3 and make sure to check the box to make latest release. Name is 'Release 1.2.3' and some description.
+9. In terminal, run `npm publish` and you will be asked by npmjs.com to enter the one-time-password which is emailed to dev-team@integrityxd.com.
+> Integrity has a dev-team@integrityxd.com npm user in TeamPassword if you need to log into the NPM website to manage the package there.

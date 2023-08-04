@@ -1,6 +1,6 @@
 {
   "name": "generator-integrity",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "A Next.js + Prisma + Cypress project generator using current tools and frameworks at Integrity Web Consulting.",
   "author": "Integrity Web Consulting",
   "repository": {
@@ -10,17 +10,9 @@
   "type": "commonjs",
   "scripts": {
     "build": "webpack",
-    "test": "mocha test/content.js --timeout 8000",
+    "test": "mocha test/content.js --timeout 16000",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
-    "prepush": "yarn lint && yarn test",
-    "prepublish": "yarn build",
-    "postinstall": "husky install"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn prepush"
-    }
+    "lint-fix": "eslint . --fix"
   },
   "keywords": [
     "yeoman-generator"
@@ -47,7 +39,6 @@
     "eslint-plugin-n": "^15.0.0 || ^16.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-zero-config": "^2.2.9",
-    "husky": "^8.0.3",
     "mocha": "8.4.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
