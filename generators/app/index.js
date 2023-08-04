@@ -69,6 +69,12 @@ module.exports = class extends Generator {
       copyTpl('docker-compose.test.yml', 'docker-compose.test.yml')
       copyTpl('docker-compose.yml', 'docker-compose.yml')
 
+      // special case for gitignore as npm publish will rename and omit .gitignore
+      this.fs.copy(
+        this.templatePath('gitignore'),
+        this.destinationPath('.gitignore')
+      )
+
       this.log(`Updated package.json with the new name: ${projectName}`)
     } catch (err) {
       this.log(`Error reading or updating package.json: ${err.message}`)
