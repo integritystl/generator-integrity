@@ -9,7 +9,7 @@ A Next.js + Prisma + Cypress project generator using current tools and framework
 
 ## Usage
 ```bash
-# generate your project files - it will prompt you for information
+# you do not need to enter a project name, it will ask you for one
 npx -p yo -p generator-integrity@latest -c 'yo integrity'
 
 # cd into new project
@@ -21,7 +21,7 @@ cd my-new-project
 
 When you run it you'll be asked to pick your preferences for:
 * Project Name
-* Database Name
+* Database Name (defaults to 'my-project-name_database')
 * Database User Name (defaults to 'admin')
 * Database User Password (default to 'password')
 * Database Port (default 3306)

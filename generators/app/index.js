@@ -20,13 +20,21 @@ module.exports = class extends Generator {
       validate: name === 'databaseUserPassword' ? utils.testValidPasswordValue : utils.testValidInputValue
     })
 
-    this.answers = await this.prompt([
-      prompt('name', 'Your project name'),
-      prompt('databaseName', 'What will be your MYSQL database name?'),
+    const nameAnswer = await this.prompt({
+      type: 'input',
+      name: 'name',
+      message: 'Your project name',
+      default: 'my-project-name'
+    })
+
+    const otherAnswers = await this.prompt([
+      prompt('databaseName', 'What will be your MYSQL database name?', `${nameAnswer.name}_database`),
       prompt('databaseUser', 'What will be your database user name?', 'admin'),
       prompt('databaseUserPassword', 'What will be your database user password?', 'password'),
       prompt('databasePort', 'What port will be your database run on?', '3306')
     ])
+
+    this.answers = { ...nameAnswer, ...otherAnswers }
 
     this.log('You chose: \n' + Object.entries(this.answers).map(([key, value]) => `  ${key}: ${value}`).join('\n'))
   }
