@@ -21,9 +21,13 @@ case ${answer:0:1} in
         echo -e "$IPURPLE Stop any containers...$NC"
         docker ps -aq | xargs -r docker stop
 
-        # Remove all containers, images, networks, and volumes
+        # Remove all containers, images, and networks
         echo -e "$IPURPLE Deleting all stopped containers, images, networks, and volumes ..$NC"
-        docker system prune --all --volumes -f
+        docker system prune --all -f
+
+        # Remove all unused local volumes
+        echo -e "$IPURPLE Deleting all unused local volumes used by at least one container ..$NC"
+        docker volume prune --filter all=1 -f
 
         echo -e "$IPURPLE All clean!$NC"
 
