@@ -5,7 +5,7 @@ A Next.js + Prisma + Cypress project generator using current tools and framework
 ## Requirements
 * Node v16.x - Node version 16.x is required. Versions less than or greater than 16 will not build
 * Docker
-* Docker-Compose
+* Docker-Compose.
 
 ## Usage
 ```bash
