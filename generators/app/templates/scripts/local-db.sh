@@ -14,9 +14,9 @@ export DATABASE_URL=$LOCAL_DATABASE_URL
 # Restart the mysql server
 function restartDatabase {
     # Bring down existing MYSQL container
-    docker-compose down --remove-orphans
+    docker compose down --remove-orphans
     # Start MYSQL container
-    docker-compose up -d
+    docker compose up -d
 
     # Wait for MYSQL server (within container) to be ready by querying it
     while ! docker exec $LOCAL_MYSQL_CONTAINER_NAME mysql --user=$LOCAL_MYSQL_ROOT --password=$LOCAL_MYSQL_ROOT_PASSWORD -e "SELECT 1" &> /dev/null ; do

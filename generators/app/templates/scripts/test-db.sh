@@ -17,9 +17,9 @@ export DATABASE_URL=$TEST_DATABASE_URL
 # Restart the test mysql server
 function restartDatabase {
     # Bring down the test mysql server
-    docker-compose -f docker-compose.test.yml down --remove-orphans
+    docker compose -f docker-compose.test.yml down --remove-orphans
     # Start the test mysql server
-    docker-compose -f docker-compose.test.yml up -d
+    docker compose -f docker-compose.test.yml up -d
 
     # Wait for MYSQL server (within container) to be ready by querying it
     while ! docker exec $TEST_MYSQL_CONTAINER_NAME mysql --user=$TEST_MYSQL_ROOT --password=$TEST_MYSQL_ROOT_PASSWORD -e "SELECT 1" &> /dev/null ; do

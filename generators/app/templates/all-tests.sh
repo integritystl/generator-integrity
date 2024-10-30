@@ -16,7 +16,7 @@ export DATABASE_URL=$TEST_DATABASE_URL
 # Cleanup by bringing down the docker containers even if the script errors
 function cleanup {
     echo -e "Bringing down docker containers"
-    docker-compose -f docker-compose.test.yml down --remove-orphans
+    docker compose -f docker-compose.test.yml down --remove-orphans
     exit 0
 }
 trap cleanup EXIT
