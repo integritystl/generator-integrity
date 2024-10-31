@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const Generator = require('yeoman-generator')
 const util = require('util')
 const childProcess = require('child_process')
