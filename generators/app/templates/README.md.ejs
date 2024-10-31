@@ -2,14 +2,14 @@
 =============
 
 ## Prerequisites
-* Node version `16.x`
+* Node version `18.x`
 * Yarn version `1.22.x`
 * Docker
 
 ## Local Development
-* `./local-start.sh` - all-in-one startup for local development. Creates a local database using docker, prisma generate and migrate and seed, build and serves the next app on port http://localhost:3000.
-* `./all-tests.sh` - **(the app needs to be running locally for these)** runs linter and end-to-end tests locally. Creates a test database using docker.
+* `./local-start.sh` - all-in-one startup for local development. Creates a local database using docker, prisma generate and migrate and seed, build and serves the next app on port https://localhost:3000.
 * `yarn lint` - run eslint and prettier
+* `yarn build` - build the next app (ensures Typescript compiles correctly)
 * `./scripts/nuke.sh` - a debug helper that resets all of docker on your host machine, so you can 'fresh install'.
 > Careful using the `nuke.sh` script! This will clear out ALL containers, images, networks, and volumes of ALL projects on your host machine.
 
@@ -21,10 +21,10 @@ This is **NOT** the same thing as a 'production environment'/'staging environmen
 ## Prisma ORM
 We use the [Prisma Object Relational Mapper package](https://www.prisma.io/docs) for working with our MySQL database. It has it's own unique conventions and particularities. One of the things you'll notice is that the models that we define in the `schema.prisma` file get regenerated into the actual 3rd party package `@prisma/client`. So, say we defined a `Question` model, after it regenerates you will be able to `import { Question } from '@prisma/client'` which can seem counter-intuitive since that is our custom code being imported from a 3rd party library.
 
-You need to be aware that after you or any other dev have made modifications to the schema (via migrations for example) Prisma needs to regenerate itself before those changes are reflected in your code. As a nicety there is a `prebuild` script that runs `prisma generate` which will run this regeneration for you.  The `/.local-start.sh` and `./all-tests.sh` scripts will also handle this for you.
+You need to be aware that after you or any other dev have made modifications to the schema (via migrations for example) Prisma needs to regenerate itself before those changes are reflected in your code. As a nicety there is a `prebuild` script that runs `prisma generate` which will run this regeneration for you.  The `/.local-start.sh` script will also handle this for you.
 
 ## How To
-* [Create databse migrations](create-migrations.md)
+* [Create database migrations](create-migrations.md)
 * [How to setup Amplify Hosting and CI/CD](https://docs.integrityxd.dev/Next/amplify)
 * [How to view application logs on AWS Hosting](https://docs.integrityxd.dev/Next/loggingOnAmplify)
 
@@ -32,4 +32,3 @@ You need to be aware that after you or any other dev have made modifications to 
 * [React](https://react.dev/) with [Typescript](https://www.typescriptlang.org/docs/) using [Next.js](https://nextjs.org/)
 * MySQL database on AWS with [Prisma ORM](https://www.prisma.io/)
 * Continuous Integration/Deployment and Hosting on[AWS Amplify](https://aws.amazon.com/amplify/)
-* End-to-end testing with [Cypress](https://www.cypress.io/)

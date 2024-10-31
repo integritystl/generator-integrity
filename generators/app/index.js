@@ -70,11 +70,9 @@ module.exports = class extends Generator {
       }
 
       copyTpl('README.md', 'README.md')
-      copyTpl('cypress/e2e/home.cy', 'cypress/e2e/home.cy.js')
-      copyTpl('components/Meta.tsx', 'components/Meta.tsx')
       copyTpl('.env', '.env')
+      copyTpl('app/layout.tsx', 'app/layout.tsx')
       copyTpl('scripts/connect-to-mysql.sh', 'scripts/connect-to-mysql.sh')
-      copyTpl('docker-compose.test.yml', 'docker-compose.test.yml')
       copyTpl('docker-compose.yml', 'docker-compose.yml')
 
       // special case for gitignore as npm publish will rename and omit .gitignore

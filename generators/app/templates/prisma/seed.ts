@@ -1,12 +1,14 @@
-import data from './data'
-import { Prisma, PrismaClient } from '@prisma/client'
-const { SEED_ITEMS } = data
-const prisma = new PrismaClient()
+import data from "./data";
+import { Prisma, PrismaClient } from "@prisma/client";
+const { SEED_ITEMS } = data;
+const prisma = new PrismaClient();
 
-export async function recreateInitialData(prismaInstance?: PrismaClient): Promise<void> {
-  const p = prismaInstance || prisma
+export async function recreateInitialData(
+  prismaInstance?: PrismaClient
+): Promise<void> {
+  const p = prismaInstance || prisma;
 
-  let transactionList = []
+  let transactionList = [];
 
   for (const item of SEED_ITEMS) {
     transactionList.push(
@@ -14,23 +16,25 @@ export async function recreateInitialData(prismaInstance?: PrismaClient): Promis
         where: { id: item.id },
         update: item,
         create: item,
-      }),
-    )
+      })
+    );
   }
 
-  await p.$transaction(transactionList, { isolationLevel: Prisma.TransactionIsolationLevel.Serializable })
+  await p.$transaction(transactionList, {
+    isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+  });
 }
 
 async function seed() {
-  return recreateInitialData()
+  return recreateInitialData();
 }
 
 seed()
   .then(async () => {
-    await prisma.$disconnect()
+    await prisma.$disconnect();
   })
   .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
