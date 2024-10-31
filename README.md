@@ -10,7 +10,7 @@ A Next.js + Prisma + Cypress project generator using current tools and framework
 ## Usage
 ```bash
 # you do not need to enter a project name, it will ask you for one
-npx -p yo -p generator-integrity@latest -c 'yo integrity'
+npx create-integrity-app
 
 # cd into new project
 cd my-new-project
@@ -27,26 +27,22 @@ When you run it you'll be asked to pick your preferences for:
 * Database Port (default 3306)
 
 ### Development
-For development, you'll need to install the yo package globally, `npm install -g yo`
-
 Make your changes and then:
 ```bash
+
 # build/compile the generator /dist folder
 yarn build
-# link this package to your global npm packages
+
+# Remove old global package versions of generator-integrity you might have installed
+npm uninstall -g generator-integrity
+
+# link this package to your global npm packages (and npx)
 npm link
 
-# now from any directory you can use the linked package just like a global package
+# run the linked package, same as running any npx command
 cd ..
-yo integrity
+npx create-integrity-app
 ```
-
-If making multiple changes, may need to unlink and relink.
-```bash
-npm unlink generator-integrity && yarn build && npm link
-```
-
-If you run into issues performing `npm unlink generator-integrity` such as peer dependency issues, you can also forcibly delete the it using `npm uninstall -g generator-integrity`
 
 #### Note about generators
 For any yeoman-generator, the repo name property must be prefixed by 'generator-'. The `keywords` property must contain "yeoman-generator" and the repo must have a description to be indexed by yeoman's generators page. The `files` property must be an array of files and directories that is used by this generator.
