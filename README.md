@@ -10,7 +10,7 @@ A Next.js + Prisma + Cypress project generator using current tools and framework
 ## Usage
 ```bash
 # you do not need to enter a project name, it will ask you for one
-npx create-integrity-app
+npx generator-integrity
 
 # cd into new project
 cd my-new-project
@@ -41,7 +41,7 @@ npm link
 
 # run the linked package, same as running any npx command
 cd ..
-npx create-integrity-app
+npx generator-integrity
 ```
 
 #### Note about generators
