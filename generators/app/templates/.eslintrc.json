@@ -3,7 +3,5 @@
     "browser": true,
     "node": true
   },
-  "extends": "next/core-web-vitals",
-  "plugins": ["cypress"],
-  "ignorePatterns": ["cypress/report/**/*.json"]
+  "extends": ["next/core-web-vitals", "next/typescript"]
 }

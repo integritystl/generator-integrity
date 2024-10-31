@@ -3,7 +3,7 @@ Generator-Integrity [![Main Build](https://github.com/integritystl/generator-int
 A Next.js + Prisma + Cypress project generator using current tools and frameworks (as of 2023) at [Integrity Web Consulting](https://www.integrityxd.com/).
 
 ## Requirements
-* Node v16.x - Node version 16.x is required. Versions less than or greater than 16 will not build
+* Node v18.x - Node version 18.x is required. Versions less than or greater than 18 will not build
 * Docker
 * Docker-Compose
 
