@@ -1,5 +1,3 @@
-import tailwindPlugin from 'prettier-plugin-tailwindcss';
-
 const config = {
   bracketSpacing: true,
   semi: false,
@@ -7,7 +5,7 @@ const config = {
   printWidth: 140,
   tabWidth: 2,
   singleQuote: true,
-  plugins: [tailwindPlugin],
+  plugins: ['prettier-plugin-tailwindcss'],
 }
 
 export default config;

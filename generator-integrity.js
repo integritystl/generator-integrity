@@ -1,15 +1,20 @@
 #!/usr/bin/env node
 
-const yeoman = require('yeoman-environment')
-const env = yeoman.createEnv()
+import { createEnv } from 'yeoman-environment';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-// Register and run the generator programmatically
-env.register(require.resolve('./generators/app'), 'integrity');
+const env = createEnv();
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Register and run the generator programmatically with an absolute path
+env.register(resolve(__dirname, './generators/app'), 'integrity');
+
 (async () => {
   try {
-    await env.run('integrity')
-    console.log('Generator completed successfully.')
+    await env.run('integrity');
+    console.log('Generator completed successfully.');
   } catch (err) {
-    console.error('Error running generator:', err)
+    console.error('Error running generator:', err);
   }
-})()
+})();
