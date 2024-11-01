@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+# enforce yarn as the package manager
+package-lock.json
+
 # testing
 /coverage
 
