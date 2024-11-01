@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'friday'
+      time: '06:00'
+      timezone: 'America/Chicago'
+    versioning-strategy: 'increase-if-necessary'
+    reviewers:
+      - 'bpkennedy'
+      - 'jetboh'
+    groups:
+      major-updates:
+        patterns:
+          - '*'
+        update-types: ['major']
+      minor-patch-updates:
+        patterns:
+          - '*'
+        update-types: ['minor', 'patch']
+    allow:
+      - dependency-type: "all"
