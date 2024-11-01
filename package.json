@@ -1,13 +1,13 @@
 {
   "name": "generator-integrity",
-  "version": "2.1.4",
-  "description": "A Next.js + Prisma + Cypress project generator using current tools and frameworks at Integrity Web Consulting.",
+  "version": "2.3.4",
+  "type": "module",
+  "description": "A Next.js + Prisma project generator using current tools and frameworks at Integrity Web Consulting.",
   "author": "Integrity Web Consulting",
   "repository": {
     "type": "git",
     "url": "https://github.com/integritystl/generator-integrity.git"
   },
-  "type": "commonjs",
   "scripts": {
     "build": "webpack",
     "test": "mocha test/content.js --timeout 16000",

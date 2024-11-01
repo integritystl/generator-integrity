@@ -1,6 +1,6 @@
 Generator-Integrity [![Main Build](https://github.com/integritystl/generator-integrity/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/integritystl/generator-integrity/actions?query=workflow)
 ===================
-A Next.js + Prisma + Cypress project generator using current tools and frameworks (as of 2023) at [Integrity Web Consulting](https://www.integrityxd.com/).
+A Next.js + Prisma project generator using current tools and frameworks (as of 2023) at [Integrity Web Consulting](https://www.integrityxd.com/).
 
 ## Requirements
 * Node v18.x - Node version 18.x is required. Versions less than or greater than 18 will not build

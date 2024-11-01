@@ -1,35 +1,34 @@
-const path = require('path')
-const fs = require('fs')
-const assert = require('chai').assert
-const helpers = require('yeoman-test')
+import path from 'path';
+import fs from 'fs';
+import { assert } from 'chai';
+import helpers from 'yeoman-test';
 
-const appGeneratorPath = path.join(__dirname, '../generators/app')
-const tempDir = path.join(__dirname, 'temp')
+const appGeneratorPath = path.join(new URL('.', import.meta.url).pathname, '../generators/app');
+const tempDir = path.join(new URL('.', import.meta.url).pathname, 'temp');
 
 describe('Yeoman Generator Tests', function () {
-  let destinationPath
+  let destinationPath;
 
-  function shouldCreateFile (p) {
+  function shouldCreateFile(p) {
     it(`should create ${p}`, function () {
-      assert.isTrue(fs.existsSync(path.join(destinationPath, p)))
-    })
+      assert.isTrue(fs.existsSync(path.join(destinationPath, p)));
+    });
   }
 
-  function shouldHaveCorrectContent ({ filePath, containedString }) {
+  function shouldHaveCorrectContent({ filePath, containedString }) {
     it(`should find ${filePath} with the correct content`, function () {
-      const content = fs.readFileSync(path.join(destinationPath, filePath), 'utf-8')
-      assert.include(content, containedString)
-    })
+      const content = fs.readFileSync(path.join(destinationPath, filePath), 'utf-8');
+      assert.include(content, containedString);
+    });
   }
 
-  before(function () {
-    fs.mkdirSync(tempDir)
-
-    return helpers
+  before(async function () {
+    fs.mkdirSync(tempDir);
+  
+    await helpers
       .run(appGeneratorPath)
       .inTmpDir((dir) => {
-        destinationPath = dir
-        return destinationPath
+        destinationPath = dir; // Here, `dir` is the temporary directory path
       })
       .withPrompts({
         name: 'zebra',
@@ -37,12 +36,12 @@ describe('Yeoman Generator Tests', function () {
         databaseUser: 'admin',
         databaseUserPassword: 'password',
         databasePort: '3309'
-      })
-  })
+      });
+  });
 
   after(function () {
-    fs.rmdirSync(tempDir, { recursive: true })
-  })
+    fs.rmdirSync(tempDir, { recursive: true });
+  });
 
   describe('General Tests', function () {
     const paths = [
@@ -67,7 +66,7 @@ describe('Yeoman Generator Tests', function () {
       'zebra/scripts/local-db.sh',
       'zebra/scripts/nuke.sh',
       'zebra/.env',
-      'zebra/.eslintrc.json',
+      'zebra/eslint.config.mjs',
       'zebra/.gitignore',
       'zebra/.prettierignore',
       'zebra/amplify.yml',
@@ -82,10 +81,10 @@ describe('Yeoman Generator Tests', function () {
       'zebra/tailwind.config.ts',
       'zebra/tsconfig.json',
       'zebra/yarn.lock'
-    ]
+    ];
 
-    paths.forEach(p => shouldCreateFile(p))
-  })
+    paths.forEach(p => shouldCreateFile(p));
+  });
 
   describe('Content Tests', function () {
     const assertions = [
@@ -100,8 +99,8 @@ describe('Yeoman Generator Tests', function () {
       { filePath: `zebra/docker-compose.yml`, containedString: `container_name: zebra_localdb` },
       { filePath: `zebra/README.md`, containedString: `zebra` },
       { filePath: `zebra/package.json`, containedString: `"name": "zebra",` }
-    ]
+    ];
 
-    assertions.forEach(assertion => shouldHaveCorrectContent(assertion))
-  })
-})
+    assertions.forEach(assertion => shouldHaveCorrectContent(assertion));
+  });
+});
