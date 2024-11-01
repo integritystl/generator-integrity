@@ -2,7 +2,7 @@ import standard from 'eslint-config-standard';
 
 export default [
   {
-    ignores: ['templates/**'], // Move ignores from .eslintignore to this config
+    ignores: ['templates/**', 'dist/**'], // Move ignores from .eslintignore to this config
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
