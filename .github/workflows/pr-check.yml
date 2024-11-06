@@ -1,22 +1,25 @@
-name: Install and Lint
-on: [push]
+name: Basic PR Validation
+on:
+  pull_request:
+
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node 18
+      - name: Set up Node.js 18
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
 
       - name: Install dependencies
         run: yarn install --immutable --immutable-cache
 
-      - name: Lint
+      - name: Run lint
         run: yarn lint
-        env:
-          CI: true
+
+      - name: Run build
+        run: yarn build
