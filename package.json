@@ -1,6 +1,6 @@
 {
   "name": "generator-integrity",
-  "version": "2.3.5",
+  "version": "2.4.5",
   "type": "module",
   "description": "A Next.js + Prisma project generator using current tools and frameworks at Integrity Web Consulting.",
   "author": "Integrity Web Consulting",
