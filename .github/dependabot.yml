@@ -9,16 +9,11 @@ updates:
       timezone: 'America/Chicago'
     versioning-strategy: 'increase-if-necessary'
     reviewers:
-      - 'bpkennedy'
-      - 'jetboh'
+      - 'integritystl/react-devs'
     groups:
       major-updates:
-        patterns:
-          - '*'
         update-types: ['major']
       minor-patch-updates:
-        patterns:
-          - '*'
         update-types: ['minor', 'patch']
     allow:
       - dependency-type: "all"
