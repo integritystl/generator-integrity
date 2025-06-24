@@ -1,6 +1,6 @@
 {
   "name": "generator-integrity",
-  "version": "2.4.7",
+  "version": "2.5.0",
   "type": "module",
   "description": "A Next.js + Prisma project generator using current tools and frameworks at Integrity Web Consulting.",
   "author": "Integrity Web Consulting",
@@ -15,7 +15,7 @@
     "lint-fix": "eslint . --fix"
   },
   "engines": {
-    "node": "^18.x"
+    "node": "^20.x"
   },
   "keywords": [
     "yeoman-generator"
