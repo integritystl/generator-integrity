@@ -3,7 +3,7 @@ Generator-Integrity [![Main Build](https://github.com/integritystl/generator-int
 A Next.js + Prisma project generator using current tools and frameworks (as of 2023) at [Integrity Web Consulting](https://www.integrityxd.com/).
 
 ## Requirements
-* Node v18.x - Node version 18.x is required. Versions less than or greater than 18 will not build
+* Node v20.x - Node version 20.x is required. Versions less than or greater than 20 will not build
 * Docker
 * Docker-Compose
 
