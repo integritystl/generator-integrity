@@ -46,5 +46,13 @@
     "typescript": "^5",
     "wait-on": "^8.0.3"
   },
+  "resolutions": {
+    "@eslint/plugin-kit": "^0.3.3",
+    "cross-spawn": "^7.0.5",
+    "nanoid": "^3.3.8",
+    "brace-expansion": "^2.0.2",
+    "axios": "^1.11.0",
+    "form-data": "^4.0.4"
+  },
   "description": "Your project description"
 }
