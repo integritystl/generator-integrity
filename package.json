@@ -29,7 +29,7 @@
     "create-integrity-app": "./generator-integrity.js"
   },
   "dependencies": {
-    "yeoman-environment": "^4.4.3",
+    "yeoman-environment": "^5.0.0",
     "yeoman-generator": "^7.3.3"
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "webpack-cli": "^6.0.1",
     "webpack-node-externals": "^3.0.0",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^10.0.1"
+    "yeoman-test": "^11.0.0"
   },
   "resolutions": {
     "**/wrap-ansi": "7.0.0"
