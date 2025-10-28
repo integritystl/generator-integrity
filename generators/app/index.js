@@ -98,6 +98,10 @@ export default class extends Generator {
   
 
   async install() {
+    if (this.options.skipInstall) {
+      this.log('Skipping yarn package installation...');
+      return;
+    }
     this.log('Installing yarn packages...');
     await exec(`yarn install --cwd ${this.destinationPath()}`);
   }
