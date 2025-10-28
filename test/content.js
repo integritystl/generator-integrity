@@ -23,13 +23,20 @@ describe('Yeoman Generator Tests', function () {
   }
 
   before(async function () {
-    fs.mkdirSync(tempDir);
+    this.timeout(30000); // Increase timeout to 30 seconds
+    
+    // Clean up and create temp directory
+    if (fs.existsSync(tempDir)) {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+    fs.mkdirSync(tempDir, { recursive: true });
   
     await helpers
       .run(appGeneratorPath)
       .inTmpDir((dir) => {
         destinationPath = dir; // Here, `dir` is the temporary directory path
       })
+      .withOptions({ skipInstall: true }) // Skip yarn install during tests
       .withPrompts({
         name: 'zebra',
         databaseName: 'zebra_database',
@@ -40,7 +47,9 @@ describe('Yeoman Generator Tests', function () {
   });
 
   after(function () {
-    fs.rmdirSync(tempDir, { recursive: true });
+    if (fs.existsSync(tempDir)) {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
   });
 
   describe('General Tests', function () {
