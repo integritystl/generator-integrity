@@ -29,6 +29,7 @@
     "create-integrity-app": "./generator-integrity.js"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
     "yeoman-environment": "^5.0.0",
     "yeoman-generator": "^7.3.3"
   },
@@ -44,7 +45,7 @@
     "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-zero-config": "^2.2.9",
     "mocha": "^11.0.1",
-    "webpack": "^5.88.2",
+    "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1",
     "webpack-node-externals": "^3.0.0",
     "yeoman-assert": "^3.1.1",
