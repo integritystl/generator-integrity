@@ -29,15 +29,15 @@
     "create-integrity-app": "./generator-integrity.js"
   },
   "dependencies": {
-    "yeoman-environment": "^5.0.0",
-    "yeoman-generator": "^7.3.3"
+    "yeoman-environment": "^6.0.0",
+    "yeoman-generator": "^8.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "babel-loader": "^10.0.0",
     "chai": "^6.0.0",
-    "eslint": "^9.13.0",
+    "eslint": "^10.0.3",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^17.12.0",
