@@ -15,7 +15,7 @@
     "lint-fix": "eslint . --fix"
   },
   "engines": {
-    "node": "^20.x"
+    "node": "^22.x"
   },
   "keywords": [
     "yeoman-generator"
