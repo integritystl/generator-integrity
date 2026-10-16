@@ -29,8 +29,8 @@
     "create-integrity-app": "./generator-integrity.js"
   },
   "dependencies": {
-    "yeoman-environment": "^7.0.0",
-    "yeoman-generator": "^9.2.0"
+    "yeoman-environment": "^8.2.0",
+    "yeoman-generator": "^10.0.1"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
